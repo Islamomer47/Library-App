@@ -1,0 +1,31 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.books-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.books-container .book-card {
+  flex: 1 1 calc(25% - 2rem);
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .books-container .book-card {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .books-container .book-card {
+    flex: 1 1 calc(100% - 2rem);
+  }
+}
