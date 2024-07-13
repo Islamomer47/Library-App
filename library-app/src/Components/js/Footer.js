@@ -1,10 +1,10 @@
 import React from "react";
-import "./Footer.css";
+import "../css/Footer.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© 2024 مكتبتي. جميع الحقوق محفوظة.</p>
+      <p>© 2024 مكتبتي - جميع الحقوق محفوظة</p>
     </footer>
   );
 };
