@@ -1,39 +1,56 @@
 # Library-App
 
-# Arabic Books Library
+# Library Management App
 
-A React application to display information about selected classical Arabic books, including their titles, authors, ISBN numbers, and URLs for more details.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Features](#features)
-- [Folder Structure](#folder-structure)
-
-## Introduction
-
-This project is a simple React application that showcases a selection of classical Arabic books. Each book has a title, an author, an ISBN number, and a URL for further reading. The app is designed to help users learn more about these classical works and their authors.
+Welcome to the Library Management App repository! This project is built using React and integrates with Firebase for storing book data. The app allows users to manage a library catalog, view books, add new books, and perform CRUD operations on book entries.
 
 ## Features
 
-- Display a list of classical Arabic books.
-- Each book has a title, an author, an ISBN number, and a URL for more information.
-- Simple and clean user interface.
+### Part 1: Initial Setup
 
-## Folder Structure
+- Set up the project repository and create a React app using `create-react-app`.
+- Initialize the project structure with a basic layout including a home component with header, main, and footer sections.
+- Populate initial book data using a state object.
 
-Here is the folder structure of the project:
+### Part 2: Navigation and User Management
 
-### Components
+- **Navbar Component:** Contains navigation links to Home, About, Contact, and Sign-up pages.
+- **About Us Component:** Provides information about the library.
+- **Contact Us Component:** Allows users to get in touch with the library.
+- **Sign-up Component:** Implements a sign-up form to register users. User data is stored locally (localStorage). If a user is logged in, display a logout button and a welcome message with the username.
 
-- **NavBar.js:** The navigation bar component.
-- **Footer.js:** The footer component.
-- **BookCard.js:** A component that displays a book's title, author, ISBN, and a link for more details.
+### Part 3: Book Catalog Management with Firebase
 
-### App.js
+- **Book Catalog Component:** Displays books fetched from Firebase as cards in a grid layout.
+- **Firebase Integration:** Store and retrieve book data from Firebase Firestore.
+- **CRUD Operations:** Implement functionality to add, edit, and soft delete books. Soft delete involves marking books as deleted without actually removing them from the database.
+- **Axios Usage:** Use Axios for making HTTP requests to interact with the Firebase database.
 
-The main application component that initializes the state with a list of books and renders the list of books.
+## Technologies Used
 
-### App.css
+- React
+- Firebase (Firestore)
+- Axios
 
-The CSS file for styling the application.
+## Project Structure
+
+```bash
+library-app/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Navbar.js
+│   │   ├── Footer.js
+│   │   ├── Home.js
+│   │   ├── AboutUs.js
+│   │   ├── ContactUs.js
+│   │   ├── SignUp.js
+│   │   ├── BookCatalog.js
+│   ├── App.js
+│   ├── index.js
+│   ├── firebase.js
+│   ├── booksData.json
+├── .gitignore
+├── package.json
+├── README.md
+```
