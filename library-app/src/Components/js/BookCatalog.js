@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import "../css/BookCatalog.css";
+// import "../css/BookCatalog.css";
 
 const BookCatalog = () => {
   const [books, setBooks] = useState([]);
@@ -229,47 +229,75 @@ const BookCatalog = () => {
   const filteredBooks = books.filter((book) => !book.deleted);
 
   return (
-    <div className="book-catalog">
-      <h1>معرض الكتب العربيّة</h1>
-      <div className="add-book-form">
+    <div className="p-8 bg-gray-100">
+      <h1 className="text-center mb-8 text-4xl text-black font-bold">
+        معرض الكتب العربيّة
+      </h1>
+      <div className="flex justify-center mb-8">
         <input
           type="text"
           placeholder="عنوانُ الكتاب"
           value={newBook.title}
           onChange={(e) => setNewBook({ ...newBook, title: e.target.value })}
+          className="p-2 mr-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           placeholder="المؤلّف"
           value={newBook.author}
           onChange={(e) => setNewBook({ ...newBook, author: e.target.value })}
+          className="p-2 mr-2 border border-gray-300 rounded"
         />
         <input
           type="text"
           placeholder="ISBN"
           value={newBook.isbn}
           onChange={(e) => setNewBook({ ...newBook, isbn: e.target.value })}
+          className="p-2 mr-2 border border-gray-300 rounded"
         />
         {editingBook ? (
-          <button onClick={handleUpdateBook}>عدّل الكتاب</button>
+          <button
+            onClick={handleUpdateBook}
+            className="p-2 bg-[#495057] text-white rounded transition duration-300 mr-[5%] hover:bg-[#ffd700] hover:text-black"
+          >
+            عدّل الكتاب
+          </button>
         ) : (
-          <button onClick={handleAddBook}>أضف كتاباً جديداً</button>
+          <button
+            onClick={handleAddBook}
+            className="p-2 bg-[#495057] text-white rounded transition duration-300  hover:bg-[#ffd700] hover:text-black mr-9 "
+          >
+            أضف كتاباً جديداً
+          </button>
         )}
-        <button onClick={addInitialBooks}>إضافة الكتب الأساسية</button>
+        <button
+          onClick={addInitialBooks}
+          className="p-2 bg-[#495057] text-white rounded transition duration-300 hover:bg-[#ffd700] hover:text-black mr-9  "
+        >
+          إضافة الكتب الأساسية
+        </button>
       </div>
-      <div className="books-grid">
+      <div className="flex flex-wrap justify-around">
         {filteredBooks.map((book) => (
-          <div key={book.id} className="book-card">
-            <h2>{book.title}</h2>
-            <h3>{book.author}</h3>
-            <p>ISBN: {book.isbn}</p>
+          <div
+            key={book.id}
+            className="bg-white border border-gray-300 rounded-lg p-4 m-4 w-[calc(20%-2rem)] shadow-md transition-transform transform hover:-translate-y-2"
+          >
+            <h2 className="text-xl text-gray-800 text-center">{book.title}</h2>
+            <h3 className="text-lg text-gray-500 pr-[7%] rtl">{book.author}</h3>
+            <p className="text-sm text-gray-500 pr-[7%] rtl">
+              ISBN: {book.isbn}
+            </p>
             {!book.deleted && (
-              <button className="btn" onClick={() => handleEditBook(book)}>
+              <button
+                className="p-2 bg-[#495057] text-white rounded transition duration-300  hover:bg-[#ffd700] hover:text-black mr-9 mt-10"
+                onClick={() => handleEditBook(book)}
+              >
                 تعديل
               </button>
             )}
             <button
-              className="btn"
+              className="p-2 bg-[#495057] text-white rounded transition duration-300  hover:bg-[#ffd700] hover:text-black mr-9 mt-10"
               onClick={() => handleSoftDeleteBook(book.id)}
             >
               {book.deleted ? "محذوف" : "حذف"}
